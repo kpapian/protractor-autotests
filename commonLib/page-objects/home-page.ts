@@ -1,18 +1,16 @@
 import { element, by } from 'protractor';
+import { LoginPopup } from './pop-ups/login-popup';
 
 export class HomePage {
-    private loginTomasCook = element(by.id('login-link'));
-    private nameTomas = element(by.id('userEmail'));
-    private passwordTomas = element(by.id('userPassword'));
-    private submittTommas = element(by.id('LoginBtn'));   
+    private readonly loginBtn = element(by.id('login-link'));  
+    private readonly myAccountBtn = element(by.id('loggedInHeader')); 
     
-    async clickLoginTomasCook() {
-        await this.loginTomasCook.click();
-    }
+    async clickLoginBtn(): Promise<LoginPopup> {
+        await this.loginBtn.click();
+        return new LoginPopup();
+    }   
 
-    async loginTomasCook1(name: string, password: string) {
-        await this.nameTomas.sendKeys(name);
-        await this.passwordTomas.sendKeys(password);
-        await this.submittTommas.click();
-    }
+    async isUserLoggedIn(): Promise<boolean> {
+        return await this.myAccountBtn.isPresent();
+    } 
 }

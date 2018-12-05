@@ -10,7 +10,7 @@ export class Navigation {
         await browser.navigate().back();
     }
 
-    async goToPage<T>(url: string) {
+    async goToPage(url: string) {
         await browser.get(url);
         await browser.waitForAngular();       
     } // make it generic   TODO

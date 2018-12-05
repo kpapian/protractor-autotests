@@ -12,5 +12,6 @@ if (existsSync(configFileName)) {
 
 export class Environment {
     public static baseUrl = config.baseUrl;
-    public static loginPageUrl = config.loginPageUrl;
+    public static userEmail = config.email;
+    public static userPassword = config.password;
 }
