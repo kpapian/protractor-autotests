@@ -5,6 +5,15 @@ import { Navigation } from '../commonLib/utils/navigation';
 import { Environment } from '../commonLib/utils/environment';
 import { LoginPopup } from '../commonLib/page-objects/pop-ups/login-popup';
 
+const ERROR_MESSAGE_EMAIL = 'Please enter a valid email address';
+const ERROR_MESSAGE_PASSWORD = 'Must contain a minimum of 8 characters; 1 capital and 1 lowercase letter, and 1 number';
+
+const invalidUserData: UserModel[] = [
+    new UserModel(Environment.userEmail, '12345'),
+    new UserModel('qwerty', Environment.userPassword),
+    new UserModel('qwer@mail.ua', '123456'),
+];
+
 const registeredUser: UserModel = {
     userName: Environment.userEmail,
     password: Environment.userPassword
@@ -13,15 +22,53 @@ const homePage = new HomePage();
 const loginPage = new LoginPopup();
 const navigation = new Navigation();
 
-describe('fr01 Login test suite', () => {
+describe('**fr01** Login test suite', () => {
 
-    it('fr01_1 Login with valid user', async () => {
-
+    beforeEach(async () => {
         await navigation.goToPage(Environment.baseUrl);
         await navigation.refreshPage();
-        await homePage.clickLoginBtn();
-        await loginPage.login(registeredUser);  
-        
+    });
+
+    it('**fr01_1** Login with valid user', async () => {
+
+        await homePage.clickSignInBtn();
+        await loginPage.login(registeredUser);
+
         expect(await homePage.isUserLoggedIn()).toBeTruthy();
+    });
+
+    it('**fr01_2** Check login required field', async () => {
+
+        await homePage.clickSignInBtn();
+        await loginPage.clickLoginBtn();
+
+        expect(await loginPage.isEmailErrorMessagePresent()).toBeTruthy();
+        expect(await loginPage.isPasswordErrorMessagePresent()).toBeTruthy();
+
+        expect(await loginPage.getEmailErrorMessage()).toEqual(ERROR_MESSAGE_EMAIL);
+        expect(await loginPage.getPasswordErrorMessage()).toEqual(ERROR_MESSAGE_PASSWORD);
+
+    });
+
+    for (const invalidUser of invalidUserData) {
+        it(`**fr01_3** Login with invalid user - ${invalidUser}`, async () => {
+
+            await homePage.clickSignInBtn();
+            await loginPage.login(invalidUser);
+
+            expect(await loginPage.isInvalidLoginErrorMessagePresent()).toBeTruthy();
+        });
+    }
+
+    it('**fr01_4** Check static context of login form', async () => {
+
+        await homePage.clickSignInBtn();
+
+        expect(await loginPage.isEmailErrorMessagePresent()).toBeTruthy();
+        expect(await loginPage.isPasswordErrorMessagePresent()).toBeTruthy();
+
+        expect(await loginPage.getEmailErrorMessage()).toEqual(ERROR_MESSAGE_EMAIL);
+        expect(await loginPage.getPasswordErrorMessage()).toEqual(ERROR_MESSAGE_PASSWORD);
+
     });
 })

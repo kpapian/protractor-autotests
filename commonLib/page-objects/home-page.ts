@@ -5,7 +5,7 @@ export class HomePage {
     private readonly loginBtn = element(by.id('login-link'));  
     private readonly myAccountBtn = element(by.id('loggedInHeader')); 
     
-    async clickLoginBtn(): Promise<LoginPopup> {
+    async clickSignInBtn(): Promise<LoginPopup> {
         await this.loginBtn.click();
         return new LoginPopup();
     }   

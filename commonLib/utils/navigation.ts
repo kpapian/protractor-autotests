@@ -13,5 +13,5 @@ export class Navigation {
     async goToPage(url: string) {
         await browser.get(url);
         await browser.waitForAngular();       
-    } // make it generic   TODO
+    }
 }
