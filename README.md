@@ -80,7 +80,7 @@ package.json
 Contains all the information of your web app.It contains all the metadata : set of data which describes and gives info about all other data.Package.json provides a simple way to keep track of packages that are being used in application.
 
 ```powershell
-.vscode -> settings.json
+.vscode settings.json
 ```
 
 This file allows you to configure your code style displaying, colors, size and so on.

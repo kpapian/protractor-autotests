@@ -1,4 +1,3 @@
-import { browser } from 'protractor';
 import { } from 'jasmine';
 import { UserModel } from '../commonLib/models/user-model';
 import { HomePage } from '../commonLib/page-objects/home-page';
