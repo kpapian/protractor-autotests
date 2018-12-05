@@ -3,28 +3,32 @@ import { UserModel } from '../../models/user-model';
 import { HomePage } from '../home-page';
 
 export class LoginPopup {
-    private readonly userEmail = element(by.id('userEmail'));
-    private readonly userPassword = element(by.id('userPassword'));
-    private readonly loginBtn = element(by.id('LoginBtn')); 
-    private readonly emailErrorMessage = element(by.css('#userEmailFormFieldMA p')); 
-    private readonly passwordErrorMessage = element(by.css('#userPasswordFormFieldMA p')); 
+    private readonly emailField = element(by.id('userEmail'));
+    private readonly passwordField = element(by.id('userPassword'));
+    private readonly loginBtn = element(by.id('LoginBtn'));
+    private readonly emailErrorMessage = element(by.css('#userEmailFormFieldMA p'));
+    private readonly passwordErrorMessage = element(by.css('#userPasswordFormFieldMA p'));
     private readonly invalidLoginErrorMessage = element(by.css('NotificationLegacy NotificationLegacy'));
     private readonly loginForm = element(by.css('.Modal-content'));
-    
+    private readonly forgotYourPasswordLink = element(by.id('forgottenPassword'));
+    private readonly closeLoginFormBtn = element(by.css('.Modal-close'));
+    private readonly accountBenefitsPart = element(by.css('account-benefits'));
+    private readonly accountBenefitsTitle = element(by.css('account-benefits h2'));
+
     async login(user: UserModel): Promise<HomePage> {
-        await this.userEmail.sendKeys(user.userName);
-        await this.userPassword.sendKeys(user.password);
+        await this.emailField.sendKeys(user.userName);
+        await this.passwordField.sendKeys(user.password);
         await this.loginBtn.click();
         return new HomePage();
     }
 
     async typeEmail(email: string): Promise<LoginPopup> {
-        await this.userEmail.sendKeys(email);
+        await this.emailField.sendKeys(email);
         return this;
     }
 
     async typePassword(password: string): Promise<LoginPopup> {
-        await this.userPassword.sendKeys(password);
+        await this.passwordField.sendKeys(password);
         return this;
     }
 
@@ -33,31 +37,60 @@ export class LoginPopup {
         return new HomePage();
     }
 
-    async isEmailErrorMessagePresent(): Promise<LoginPopup> {
-        await this.emailErrorMessage.isPresent();
-        return new LoginPopup();
+    async clickCloseLoginFormBtn(): Promise<HomePage> {
+        await this.closeLoginFormBtn.click();
+        return new HomePage();
     }
 
-    async isLoginFormOpened(): Promise<LoginPopup> {
-        await this.loginForm.isPresent();
-        return new LoginPopup();
+    async isEmailErrorMessagePresent(): Promise<boolean> {
+        return await this.emailErrorMessage.isPresent();
     }
 
-    async isPasswordErrorMessagePresent(): Promise<LoginPopup> {
-        await this.passwordErrorMessage.isPresent();
-        return new LoginPopup();
+    async isLoginFormOpened(): Promise<boolean> {
+        return await this.loginForm.isPresent();
     }
 
-    async isInvalidLoginErrorMessagePresent(): Promise<LoginPopup> {
-        await this.invalidLoginErrorMessage.isPresent();
-        return new LoginPopup();
+    async isPasswordErrorMessagePresent(): Promise<boolean> {
+        return await this.passwordErrorMessage.isPresent();
     }
 
-    async getEmailErrorMessage(): Promise<string> {
+    async isInvalidLoginErrorMessagePresent(): Promise<boolean> {
+        return await this.invalidLoginErrorMessage.isPresent();
+    }
+
+    async getEmailErrorMessageText(): Promise<string> {
         return await this.emailErrorMessage.getText();
     }
 
-    async getPasswordErrorMessage(): Promise<string> {
+    async getPasswordErrorMessageText(): Promise<string> {
         return await this.passwordErrorMessage.getText();
+    }
+
+    async isLoginBtnPresent(): Promise<boolean> {
+        return await this.loginBtn.isPresent();
+    }
+
+    async isEmailFieldPresent(): Promise<boolean> {
+        return await this.emailField.isPresent();
+    }
+
+    async isPasswordFieldPresent(): Promise<boolean> {
+        return await this.passwordField.isPresent();
+    }
+
+    async isForgotYourPasswordLinkPresent(): Promise<boolean> {
+        return await this.forgotYourPasswordLink.isPresent();
+    }
+
+    async isAccountBenefitsTitlePresent(): Promise<boolean> {
+        return await this.accountBenefitsTitle.isPresent();
+    }
+
+    async getAccountBenefitsTitleText(): Promise<string> {
+        return await this.accountBenefitsTitle.getText();
+    }
+
+    async isLoginFormClosed(): Promise<boolean> {
+        return await this.loginForm.isPresent();
     }
 }
