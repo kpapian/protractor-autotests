@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "lib": [
+      "es2015"
+    ],
+    
+    "moduleResolution": "node",
+    "declaration": false,
+    "noImplicitAny": false,
+    "outDir": "tmp",
+    "pretty": true,
+    "types": ["jasmine", "node"]
+  },
+  "include": [
+    "autotests/**/*",
+    "commonLib/**/*",
+    "protractor.conf.ts",  
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
