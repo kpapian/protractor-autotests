@@ -1,6 +1,7 @@
 import { element, by } from 'protractor';
 import { UserModel } from '../../models/user-model';
 import { HomePage } from '../home-page';
+import { MyAccountPage } from '../myAccount-page';
 
 export class LoginPopup {
     private readonly emailField = element(by.id('userEmail'));
@@ -8,18 +9,17 @@ export class LoginPopup {
     private readonly loginBtn = element(by.id('LoginBtn'));
     private readonly emailErrorMessage = element(by.css('#userEmailFormFieldMA p'));
     private readonly passwordErrorMessage = element(by.css('#userPasswordFormFieldMA p'));
-    private readonly invalidLoginErrorMessage = element(by.css('NotificationLegacy NotificationLegacy'));
+    private readonly invalidLoginErrorMessage = element(by.css('.NotificationLegacy--large'));
     private readonly loginForm = element(by.css('.Modal-content'));
     private readonly forgotYourPasswordLink = element(by.id('forgottenPassword'));
     private readonly closeLoginFormBtn = element(by.css('.Modal-close'));
-    private readonly accountBenefitsPart = element(by.css('account-benefits'));
     private readonly accountBenefitsTitle = element(by.css('account-benefits h2'));
 
-    async login(user: UserModel): Promise<HomePage> {
+    async login(user: UserModel): Promise<MyAccountPage> {
         await this.emailField.sendKeys(user.userName);
         await this.passwordField.sendKeys(user.password);
         await this.loginBtn.click();
-        return new HomePage();
+        return new MyAccountPage();
     }
 
     async typeEmail(email: string): Promise<LoginPopup> {
@@ -32,9 +32,9 @@ export class LoginPopup {
         return this;
     }
 
-    async clickLoginBtn(): Promise<HomePage> {
+    async clickLoginBtn(): Promise<MyAccountPage> {
         await this.loginBtn.click();
-        return new HomePage();
+        return new MyAccountPage();
     }
 
     async clickCloseLoginFormBtn(): Promise<HomePage> {

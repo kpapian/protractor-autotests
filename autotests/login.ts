@@ -5,6 +5,7 @@ import { Navigation } from '../commonLib/utils/navigation';
 import { Environment } from '../commonLib/utils/environment';
 import { LoginPopup } from '../commonLib/page-objects/pop-ups/login-popup';
 import { browser } from 'protractor';
+import { MyAccountPage } from '../commonLib/page-objects/myAccount-page';
 
 const ERROR_MESSAGE_EMAIL = 'Please enter a valid email address';
 const ERROR_MESSAGE_PASSWORD = 'Must contain a minimum of 8 characters; 1 capital and 1 lowercase letter, and 1 number';
@@ -12,7 +13,7 @@ const ACCOUNT_BENEFIT_TITLE = 'Use My Account to:';
 
 const invalidUserData: UserModel[] = [
     new UserModel(Environment.userEmail, '12345'),
-    new UserModel('qwerty', Environment.userPassword),
+    new UserModel('qwerty@mail.ua', Environment.userPassword),
     new UserModel('qwer@mail.ua', '123456'),
 ];
 
@@ -21,6 +22,7 @@ const registeredUser: UserModel = {
     password: Environment.userPassword
 };
 const homePage = new HomePage();
+const myAccountPage = new MyAccountPage();
 const loginPage = new LoginPopup();
 const navigation = new Navigation();
 
@@ -40,7 +42,9 @@ describe('**fr01** Login test suite', () => {
         await homePage.clickSignInBtn();
         await loginPage.login(registeredUser);
 
-        expect(await homePage.isUserLoggedIn()).toBeTruthy();
+        expect(await myAccountPage.isUserLoggedIn()).toBeTruthy();
+
+        await myAccountPage.logout();
     });
 
     it('**fr01_2** Check login required field', async () => {
