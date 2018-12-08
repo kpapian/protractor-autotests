@@ -4,7 +4,6 @@ import { HomePage } from '../commonLib/page-objects/home-page';
 import { Navigation } from '../commonLib/utils/navigation';
 import { Environment } from '../commonLib/utils/environment';
 import { LoginPopup } from '../commonLib/page-objects/pop-ups/login-popup';
-import { browser } from 'protractor';
 import { MyAccountPage } from '../commonLib/page-objects/myAccount-page';
 
 const ERROR_MESSAGE_EMAIL = 'Please enter a valid email address';
@@ -26,16 +25,12 @@ const myAccountPage = new MyAccountPage();
 const loginPage = new LoginPopup();
 const navigation = new Navigation();
 
-describe('**fr01** Login test suite', () => {
+xdescribe('**fr01** Login test suite', () => {
 
     beforeEach(async () => {
         await navigation.goToPage(Environment.baseUrl);
         await navigation.refreshPage();
     });
-
-    // afterEach(async () => {
-    //     await navigation.tryLogout();
-    // });
 
     it('**fr01_1** Login with valid user', async () => {
 
