@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "fs";
 
-const configFileName = '../app.conf.json';
+const configFileName = 'app.conf.json';
 
 let config;
 

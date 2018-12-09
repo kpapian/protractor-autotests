@@ -6,12 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "protractor tmp/protractor.conf.js",
-    "cleantmp": "rimraf tmp/*",
-    "clean": "npm run cleantmp",
-    "webdriver:update": "npm run webdriver-manager update",
     "tsc": "tsc",
     "setup": "npm run tsc",
-    "webdriver-manager": "webdriver-manager",
     "pretest": "npm run setup",
     "webdriver-update": "webdriver-manager update"
   },

@@ -34,6 +34,14 @@ If something missed just added it from files
 
 ## Run tests
 
+We can run autotests in two ways:
+The first one is on the type script files level compile tsc, then navigate to cd tmp
+and than run protractor protractor.conf.js command.
+
+The second way is on the level of typescript files run command npm run test (command from package.json)
+In this case all file pathes (for ex. app.config should have way like app.conf.json)
+In case of first run pathes will be executed from tmp folder, so you need ../app.conf.json
+
 Restore nuget packages:
 
 ```powershell

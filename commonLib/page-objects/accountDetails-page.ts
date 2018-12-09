@@ -29,17 +29,19 @@ export class AccountDetails {
     private readonly saveChangesBtn = element(by.css('button.g-wide'));
 
     async fillAccountDetailsForm(accountDetails: AccountDetailsModel): Promise<AccountDetails> {
-        await this.selectTitle(accountDetails.title as any as Title);
-        await this.typeFirstName(accountDetails.firstName);
-        await this.typeLastName(accountDetails.lastName);
-        await this.selectDOB(accountDetails.dob);
-        await this.typeStreetAddress(accountDetails.streetAddress);
-        await this.typeAddressLine2(accountDetails.addressLine2);
-        await this.typeCity(accountDetails.city);
-        await this.typePostCode(accountDetails.postCode);
-        await this.selectCountry();
-        await this.typePhoneNumber(accountDetails.phoneNumber);
-        return this; // todo if smth null from model
+        if (accountDetails != null) {
+            await this.selectTitle(accountDetails.title as any as Title);
+            await this.typeFirstName(accountDetails.firstName);
+            await this.typeLastName(accountDetails.lastName);
+            await this.selectDOB(accountDetails.dob);
+            await this.typeStreetAddress(accountDetails.streetAddress);
+            await this.typeAddressLine2(accountDetails.addressLine2);
+            await this.typeCity(accountDetails.city);
+            await this.typePostCode(accountDetails.postCode);
+            await this.selectCountry();
+            await this.typePhoneNumber(accountDetails.phoneNumber);
+            return this; // todo if smth null from model
+        }
     }
 
     async selectTitle(title: Title): Promise<AccountDetails> {

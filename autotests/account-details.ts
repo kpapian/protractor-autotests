@@ -9,7 +9,7 @@ import { AccountDetails } from '../commonLib/page-objects/accountDetails-page';
 import { Converter } from '../commonLib/utils/converter';
 import { AccountDetailsModel } from '../commonLib/models/account-details-model';
 
-
+//#region Test Preparation 
 const FIRST_NAME_ERROR_MESSAGE = 'The First Name given is invalid or incomplete, please review and amend';
 const LAST_NAME_ERROR_MESSAGE = 'The Last Name given is invalid or incomplete, please review and amend';
 const CITY_ERROR_MESSAGE = 'City given is invalid or incomplete';
@@ -27,11 +27,12 @@ const loginPage = new LoginPopup();
 const navigation = new Navigation();
 const accountDetails = new AccountDetails();
 
-const validDataPath = '../test-data/fr03/fr03_1_validData.json';
-const invalidDataPath = '../test-data/fr03/fr03_2_invalidData.json';
+const validDataPath = 'test-data/fr03/fr03_1_validData.json';
+const invalidDataPath = 'test-data/fr03/fr03_2_invalidData.json';
 
 const accountDetailsValidDataModel = Converter.readFromJson<AccountDetailsModel>(validDataPath);
 const accountDetailsInvalidDataModel = Converter.readFromJson<AccountDetailsModel>(invalidDataPath);
+//#endregion
 
 fdescribe('**fr03** Account details test suite', () => {
 
@@ -51,7 +52,7 @@ fdescribe('**fr03** Account details test suite', () => {
 
     });
 
-    fit('**fr03_2** Check error messages on Account details page form fields', async () => {
+    it('**fr03_2** Check error messages on Account details page form fields', async () => {
 
         await accountDetails.typeFirstName(accountDetailsInvalidDataModel.firstName);
         await accountDetails.typeLastName(accountDetailsInvalidDataModel.lastName);
@@ -68,6 +69,10 @@ fdescribe('**fr03** Account details test suite', () => {
 
     });
 
-    it('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
+    fit('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
+
+        await accountDetails.fillAccountDetailsForm(accountDetailsValidDataModel);
+
+        expect(await accountDetails.isPasswordNotificationErrorPresent()).toBeTruthy();
     });
 })
