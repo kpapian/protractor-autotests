@@ -18,11 +18,13 @@ export class AccountDetails {
     private readonly country = element(by.id('mat-select-1'));
     private readonly phoneNumber = element(by.id('mat-input-4'));
     private readonly password = element(by.id('mat-input-5'));
-    private readonly firstNameErrorMessage = element(by.id('mat-error-8'));
-    private readonly lastNameErrorMessage = element(by.id('mat-error-9'));
-    private readonly cityErrorMessage = element(by.id('mat-error-10'));
-    private readonly phoneNumberErrorMessage = element(by.id('mat-error-11'));
-    private readonly passwordErrorMessage = element(by.id('mat-error-12'));
+
+    private readonly firstNameErrorMessage = element(by.id('mat-error-6'));
+    private readonly lastNameErrorMessage = element(by.id('mat-error-7'));
+    private readonly cityErrorMessage = element(by.id('mat-error-8'));
+    private readonly phoneNumberErrorMessage = element(by.id('mat-error-9'));
+    private readonly postCodeNumberErrorMessage = element(by.id('mat-error-10'));
+    private readonly passwordErrorMessage = element(by.id('mat-error-11'));
     private readonly passwordNotificationError = element(by.xpath('.//notification'));
     private readonly saveChangesBtn = element(by.css('button.g-wide'));
 
@@ -137,6 +139,10 @@ export class AccountDetails {
 
     async getPhoneNumberErrorMessage(): Promise<string> {
         return await this.phoneNumberErrorMessage.getText();
+    }
+
+    async getPostcodeErrorMessage(): Promise<string> {
+        return await this.postCodeNumberErrorMessage.getText();
     }
 
     async getPasswordErrorMessage(): Promise<string> {
