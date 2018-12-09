@@ -4,7 +4,7 @@ Automation framework based on TypeScript, Protractor and Jasmine technologies.
 
 ## Pre-setup
 
-1. Install **Node.js 11.0.0** from <https://nodejs.org/dist/v11.0.0/node-v11.0.0-x64.msi>
+1. Install **Node.js** from <https://nodejs.org>
 2. Install **Chrome Browser** from <https://www.google.com/chrome/browser/desktop/index.html>
 3. Install VS Code
 
@@ -26,9 +26,9 @@ npm install @types/node
 ```
 
 4. Set-up next important files (see examples):
-   - [tsconfig.json](tsconfig.json);
-   - [protractor.conf.ts](protractor.conf.ts);
-   - [package.json](package.json);
+   - [tsconfig.json](tsconfig.json)
+   - [protractor.conf.ts](protractor.conf.ts)
+   - [package.json](package.json)
 
 If something missed just added it from files
 
@@ -54,8 +54,7 @@ protractor protractor.conf.js
 
 ## Notes
 
-1. First of all, when you create autotests for application using protractor, make sure that your application client has written
-on AngularJS or Angular 2+.
+1. First of all, when you create autotests for application using protractor, make sure that your application client has written on AngularJS or Angular 2+ (SPA).
 
 2. Before all commits add to your local repository .gitignore file. Because in other case, it is not gonna work
 and you can solve the [problems](https://www.git-tower.com/learn/git/faq/ignore-tracked-files-in-git) here.
