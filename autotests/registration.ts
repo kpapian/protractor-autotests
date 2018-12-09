@@ -53,12 +53,11 @@ describe('**fr02** Registration test suite', () => {
         expect(await registerPage.getAgreeText()).toEqual(AGREE_TEXT);
     });
 
-    it(`**fr02_3** Check registration button`, async () => {
+    fit(`**fr02_3** Check registration button`, async () => {
 
         await homePage.clickRegisterBtn();
         expect(await registerPage.isRegisterBtnEnable()).toBeFalsy();
         await registerPage.clickAgreeCheckbox();
-        
         expect(await registerPage.isRegisterBtnEnable()).toBeTruthy();
     });
 

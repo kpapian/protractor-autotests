@@ -10,7 +10,7 @@ export class RegisterPopup {
     private readonly registerBtn = element(by.id('signupBtn'));
     private readonly agreeLabel = element(by.id('agreedLabel'));
     private readonly agreeLabelText = element(by.css('#agreedLabel span'));
-    private readonly agreeCheckbox = element(by.xpath('.//label[@id="agreedLabel"]'));
+    private readonly agreeCheckbox = element(by.id('agreedLabel'));
     private readonly emailErrorMessage = element(by.css('#emailMAFormFieldMA .FormFieldMA-errorText'));
     private readonly passwordErrorMessage = element(by.css('#passwordFormFieldMA .FormFieldMA-errorText'));
     private readonly confirmPasswordErrorMessage = element(by.css('#passwordConfirmationFormFieldMA .FormFieldMA-errorText'));
@@ -83,7 +83,15 @@ export class RegisterPopup {
 
     async isRegisterBtnEnable(): Promise<boolean> {
         let btnValue = await this.registerBtn.getAttribute(this.registerBtnAttribute);
+        await console.log(btnValue);
 
-        return (btnValue === this.registerBtnAttribute) ? false : true;
+        if(btnValue !== this.registerBtnAttribute)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+        return (btnValue !== this.registerBtnAttribute);
     }
 }
