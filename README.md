@@ -85,9 +85,16 @@ Contains all the information of your web app.It contains all the metadata : set 
 
 This file allows you to configure your code style displaying, colors, size and so on.
 
+## Keep eyes on versions:
+
+1. chromedriver (for updating in terminal run command: npm run webdriver:update)
+2. node.js (node -v - checks current version, for updating - download tha latest directly from site)
+3. npm (npm -v)
+
 ## Useful commands
 
 This is going to monitor the folder for any changes in our TypeScript files and compile them behind the scenes.
-```
+
+```powershell
 tsc *.ts --watch
 ```
