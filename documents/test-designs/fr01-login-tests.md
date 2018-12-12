@@ -4,9 +4,9 @@ fr01-login-tests
 
 ## Change History
 
-| Change Description | Engineer      | Date       |
-| ------------------ | ------------- | ---------- |
-| Created by         | Karyna Papian | 12/06/2018 |
+| Description | Engineer      | Date       |
+| ----------- | ------------- | ---------- |
+| Created by  | Karyna Papian | 12/06/2018 |
 
 ## Test Design Inputs
 
@@ -19,19 +19,17 @@ As an user, I want to be able login to the website - https://www.thomascook.com/
 fr01
 The component shall provide an option to login on site.
 
-## Approach Refinement
-
-### Verification Approach
+## Verification Approach
 
 Verification will be limited to confirmation that only registered user can login on site.
 
-## Test Procedure Identification &amp; Decomposition
+## Test Process
 
 ### Test Setup
 
 1. Register 1 user on https://www.thomascook.com/
 
-### Test Scenario
+### Test Scenarios
 
 fr01_1 Login with valid user 
 
@@ -101,10 +99,6 @@ Then  the login form is closed
 1. Not necessary.
 
 ## Equipment Required
-
-### Test Platform Hardware
-
-- PC with 2,0 GHz CPU and 4 GB of RAM or higher
 
 ### Test Platform Software
 
