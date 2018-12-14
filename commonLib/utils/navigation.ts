@@ -1,6 +1,7 @@
-import { browser } from "protractor";
+import { browser, element, by } from 'protractor';
 
 export class Navigation {
+    private readonly body = element(by.css('body'));
 
     async refreshPage(timeout?: number)  {
         await browser.refresh(timeout);
@@ -13,5 +14,9 @@ export class Navigation {
     async goToPage(url: string) {
         await browser.get(url);
         await browser.waitForAngular();       
+    }
+
+    async switchFocus() {
+        await this.body.click();   
     }
 }

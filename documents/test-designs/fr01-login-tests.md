@@ -16,7 +16,6 @@ As an user, I want to be able login to the website - https://www.thomascook.com/
 
 ### Requirements
 
-fr01
 The component shall provide an option to login on site.
 
 ## Verification Approach

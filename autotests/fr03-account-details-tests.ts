@@ -29,6 +29,7 @@ const accountDetails = new AccountDetails();
 
 const validDataPath = 'test-data/fr03/fr03_1_validData.json';
 const invalidDataPath = 'test-data/fr03/fr03_2_invalidData.json';
+const invalidPassword = 'qwerty123';
 
 const accountDetailsValidDataModel = Converter.readFromJson<AccountDetailsModel>(validDataPath);
 const accountDetailsInvalidDataModel = Converter.readFromJson<AccountDetailsModel>(invalidDataPath);
@@ -60,6 +61,7 @@ fdescribe('**fr03** Account details test suite', () => {
         await accountDetails.selectCountry();
         await accountDetails.typePostCode(accountDetailsInvalidDataModel.postCode);
         await accountDetails.typePhoneNumber(accountDetailsInvalidDataModel.phoneNumber);
+        await navigation.switchFocus();
 
         expect(await accountDetails.getFirstNameErrorMessage()).toEqual(FIRST_NAME_ERROR_MESSAGE);
         expect(await accountDetails.getLastNameErrorMessage()).toEqual(LAST_NAME_ERROR_MESSAGE);
@@ -69,9 +71,11 @@ fdescribe('**fr03** Account details test suite', () => {
 
     });
 
-    fit('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
+    it('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
 
         await accountDetails.fillAccountDetailsForm(accountDetailsValidDataModel);
+        await accountDetails.typePassword(invalidPassword);
+        await accountDetails.clickSaveChangesBtn();
 
         expect(await accountDetails.isPasswordNotificationErrorPresent()).toBeTruthy();
     });

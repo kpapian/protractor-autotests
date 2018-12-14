@@ -1,4 +1,4 @@
-import { element, by } from 'protractor';
+import { element, by, browser } from 'protractor';
 import { Title } from '../enum/title';
 import { AccountDetailsModel } from '../models/account-details-model';
 
@@ -10,21 +10,21 @@ export class AccountDetails {
     private readonly titleMiss = element(by.id('mat-option-3'));
     private readonly firstName = element(by.id('mat-input-2'));
     private readonly lastName = element(by.id('mat-input-3'));
-    private readonly dob = element(by.id('mat-input-6'));
     private readonly streetAddress = element(by.id('mat-input-7'));
     private readonly addressLine2 = element(by.id('mat-input-8'));
     private readonly city = element(by.id('mat-input-10'));
     private readonly postCode = element(by.id('mat-input-9'));
-    private readonly country = element(by.id('mat-select-1'));
+    private readonly country = element(by.xpath('.//*[@formcontrolname="country"]'));
+    private readonly countrySelect = element(by.id('mat-option-4'));
     private readonly phoneNumber = element(by.id('mat-input-4'));
     private readonly password = element(by.id('mat-input-5'));
 
-    private readonly firstNameErrorMessage = element(by.id('mat-error-6'));
-    private readonly lastNameErrorMessage = element(by.id('mat-error-7'));
-    private readonly cityErrorMessage = element(by.id('mat-error-8'));
-    private readonly phoneNumberErrorMessage = element(by.id('mat-error-9'));
-    private readonly postCodeNumberErrorMessage = element(by.id('mat-error-10'));
-    private readonly passwordErrorMessage = element(by.id('mat-error-11'));
+    private readonly firstNameErrorMessage = element(by.xpath('.//mat-error[@owat-err-firstname]'));
+    private readonly lastNameErrorMessage = element(by.xpath('.//mat-error[@owat-err-lastname]'));
+    private readonly cityErrorMessage = element(by.xpath('.//mat-error[@owat-err-city]'));
+    private readonly phoneNumberErrorMessage = element(by.xpath('.//mat-error[@owat-err-phone]'));
+    private readonly postCodeNumberErrorMessage = element(by.xpath('.//mat-error[@owat-err-postalcode]'));
+    private readonly passwordErrorMessage = element(by.xpath('.//mat-error[@owat-err-password]'));
     private readonly passwordNotificationError = element(by.xpath('.//notification'));
     private readonly saveChangesBtn = element(by.css('button.g-wide'));
 
@@ -33,12 +33,11 @@ export class AccountDetails {
             await this.selectTitle(accountDetails.title as any as Title);
             await this.typeFirstName(accountDetails.firstName);
             await this.typeLastName(accountDetails.lastName);
-            await this.selectDOB(accountDetails.dob);
             await this.typeStreetAddress(accountDetails.streetAddress);
             await this.typeAddressLine2(accountDetails.addressLine2);
             await this.typeCity(accountDetails.city);
             await this.typePostCode(accountDetails.postCode);
-            await this.selectCountry();
+            await this.selectCountry();            
             await this.typePhoneNumber(accountDetails.phoneNumber);
             return this; // todo if smth null from model
         }
@@ -77,11 +76,6 @@ export class AccountDetails {
         return this;
     }
 
-    async selectDOB(dob: string): Promise<AccountDetails> {
-        await this.dob.sendKeys(dob);
-        return this; // todo
-    }
-
     async typeStreetAddress(streetAddress: string): Promise<AccountDetails> {
         await this.streetAddress.clear();
         await this.streetAddress.sendKeys(streetAddress);
@@ -108,6 +102,7 @@ export class AccountDetails {
 
     async selectCountry(): Promise<AccountDetails> {
         await this.country.click();
+        await this.countrySelect.click();
         return this;
     }
 

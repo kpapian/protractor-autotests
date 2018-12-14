@@ -1,6 +1,5 @@
-import { element, by } from 'protractor';
+import { element, by, browser } from 'protractor';
 import { HomePage } from './home-page';
-import { AccountDetails } from './accountDetails-page';
 
 export class MyAccountPage {
     private readonly myAccountBtn = element(by.id('my-account-widget')); 
@@ -16,8 +15,8 @@ export class MyAccountPage {
         return await this.myAccountBtn.isPresent();
     }
 
-    async clickAccountDetails(): Promise<AccountDetails> {
+    async clickAccountDetails(): Promise<void> {
+        await browser.waitForAngular();        
         await this.accountDetailsBtn.click();
-        return new AccountDetails();
     }
 }

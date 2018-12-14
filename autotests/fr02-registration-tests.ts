@@ -4,7 +4,7 @@ import { Navigation } from '../commonLib/utils/navigation';
 import { Environment } from '../commonLib/utils/environment';
 import { RegisterPopup } from '../commonLib/page-objects/pop-ups/register-popup';
 import { UserRegistrationModel } from '../commonLib/models/user-registration-model';
-import { browser, Key } from 'protractor';
+import { Key } from 'protractor';
 
 const ERROR_MESSAGE_EMAIL = 'Please enter a valid email address';
 const ERROR_MESSAGE_PASSWORD = 'Must contain a minimum of 8 characters; 1 capital and 1 lowercase letter, and 1 number';
