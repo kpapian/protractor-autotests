@@ -8,6 +8,7 @@ import { MyAccountPage } from '../commonLib/page-objects/myAccount-page';
 import { AccountDetails } from '../commonLib/page-objects/accountDetails-page';
 import { Converter } from '../commonLib/utils/converter';
 import { AccountDetailsModel } from '../commonLib/models/account-details-model';
+import { browser } from 'protractor';
 
 //#region Test Preparation 
 const FIRST_NAME_ERROR_MESSAGE = 'The First Name given is invalid or incomplete, please review and amend';
@@ -36,7 +37,7 @@ const accountDetailsValidDataModel = Converter.readFromJson<AccountDetailsModel>
 const accountDetailsInvalidDataModel = Converter.readFromJson<AccountDetailsModel>(invalidDataPath);
 //#endregion
 
-fdescribe('**fr03** Account details test suite', () => {
+describe('**fr03** Account details test suite', () => {
 
     beforeEach(async () => {
         await navigation.goToPage(Environment.baseUrl);
@@ -55,12 +56,12 @@ fdescribe('**fr03** Account details test suite', () => {
         await accountDetails.fillAccountDetailsForm(accountDetailsValidDataModel);
         await accountDetails.typePassword(registeredUser.password);
         await accountDetails.clickSaveChangesBtn();
-
+        
         expect(await accountDetails.isDetailsUpdatedSuccessMessagePresent()).toBeTruthy();
         expect(await accountDetails.getDetailsUpdatedSuccessMessage()).toEqual(DETAIL_UPDATED_SUCCESS_MESSAGE);
     });
 
-    xit('**fr03_2** Check error messages on Account details page form fields', async () => {
+    it('**fr03_2** Check error messages on Account details page form fields', async () => {
 
         await accountDetails.typeFirstName(accountDetailsInvalidDataModel.firstName);
         await accountDetails.typeLastName(accountDetailsInvalidDataModel.lastName);
@@ -78,7 +79,7 @@ fdescribe('**fr03** Account details test suite', () => {
 
     });
 
-    xit('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
+    it('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
 
         await accountDetails.fillAccountDetailsForm(accountDetailsValidDataModel);
         await accountDetails.typePassword(invalidPassword);
