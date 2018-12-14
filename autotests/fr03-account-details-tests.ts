@@ -15,6 +15,7 @@ const LAST_NAME_ERROR_MESSAGE = 'The Last Name given is invalid or incomplete, p
 const CITY_ERROR_MESSAGE = 'City given is invalid or incomplete';
 const POSTCODE_ERROR_MESSAGE = 'The postcode given is invalid or incomplete. Please review and amend';
 const PHONE_NUMBER_ERROR_MESSAGE = 'Contact Number given is invalid or incomplete';
+const DETAIL_UPDATED_SUCCESS_MESSAGE = 'Your details have been updated';
 
 
 const registeredUser: UserModel = {
@@ -49,11 +50,17 @@ fdescribe('**fr03** Account details test suite', () => {
         await myAccountPage.logout();
     });
 
-    it('**fr03_1** Fill Account details form with valid data', async () => {
+    fit('**fr03_1** Fill Account details form with valid data', async () => {
 
+        await accountDetails.fillAccountDetailsForm(accountDetailsValidDataModel);
+        await accountDetails.typePassword(registeredUser.password);
+        await accountDetails.clickSaveChangesBtn();
+
+        expect(await accountDetails.isDetailsUpdatedSuccessMessagePresent()).toBeTruthy();
+        expect(await accountDetails.getDetailsUpdatedSuccessMessage()).toEqual(DETAIL_UPDATED_SUCCESS_MESSAGE);
     });
 
-    it('**fr03_2** Check error messages on Account details page form fields', async () => {
+    xit('**fr03_2** Check error messages on Account details page form fields', async () => {
 
         await accountDetails.typeFirstName(accountDetailsInvalidDataModel.firstName);
         await accountDetails.typeLastName(accountDetailsInvalidDataModel.lastName);
@@ -71,7 +78,7 @@ fdescribe('**fr03** Account details test suite', () => {
 
     });
 
-    it('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
+    xit('**fr03_3** Add valid data on Account details page form with invalid password', async () => {
 
         await accountDetails.fillAccountDetailsForm(accountDetailsValidDataModel);
         await accountDetails.typePassword(invalidPassword);

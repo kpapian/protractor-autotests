@@ -1,4 +1,4 @@
-import { element, by, browser } from 'protractor';
+import { element, by } from 'protractor';
 import { Title } from '../enum/title';
 import { AccountDetailsModel } from '../models/account-details-model';
 
@@ -27,6 +27,7 @@ export class AccountDetails {
     private readonly passwordErrorMessage = element(by.xpath('.//mat-error[@owat-err-password]'));
     private readonly passwordNotificationError = element(by.xpath('.//notification'));
     private readonly saveChangesBtn = element(by.css('button.g-wide'));
+    private readonly savedAccountDetailsSuccessMessage = element(by.css('.notification--success'));
 
     async fillAccountDetailsForm(accountDetails: AccountDetailsModel): Promise<AccountDetails> {
         if (accountDetails != null) {
@@ -152,5 +153,13 @@ export class AccountDetails {
 
     async getPasswordNotificationError(): Promise<string> {
         return await this.passwordNotificationError.getText();
+    }
+
+    async isDetailsUpdatedSuccessMessagePresent(): Promise<boolean> {
+        return await this.savedAccountDetailsSuccessMessage.isPresent();
+    }
+
+    async getDetailsUpdatedSuccessMessage(): Promise<string> {
+        return await this.savedAccountDetailsSuccessMessage.getText();
     }
 }

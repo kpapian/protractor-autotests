@@ -25,7 +25,7 @@ const myAccountPage = new MyAccountPage();
 const loginPage = new LoginPopup();
 const navigation = new Navigation();
 
-xdescribe('**fr01** Login test suite', () => {
+describe('**fr01** Login test suite', () => {
 
     beforeEach(async () => {
         await navigation.goToPage(Environment.baseUrl);
