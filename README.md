@@ -35,12 +35,12 @@ If something missed just added it from files
 ## Run tests
 
 We can run autotests in two ways:
-The first one is on the type script files level compile tsc, then navigate to cd tmp
-and than run protractor protractor.conf.js command.
 
-The second way is on the level of typescript files run command npm run test (command from package.json)
-In this case all file pathes (for ex. app.config should have way like app.conf.json)
-In case of first run pathes will be executed from tmp folder, so you need ../app.conf.json
+1. The first one is on the type script files level compile `tsc`, then navigate to `cd tmp` and than run `protractor protractor.conf.js` command.
+
+2. The second way is on the level of typescript files run command `npm run test` (command from package.json). In this case all file paths (for ex. app.config should have way like app.conf.json).
+
+In case of first run - paths will be executed from tmp folder, so you need add ../app.conf.json
 
 Restore nuget packages:
 
@@ -64,8 +64,7 @@ protractor protractor.conf.js
 
 1. First of all, when you create autotests for application using protractor, make sure that your application client has written on AngularJS or Angular 2+ (SPA).
 
-2. Before all commits add to your local repository .gitignore file. Because in other case, it is not gonna work
-and you can solve the [problems](https://www.git-tower.com/learn/git/faq/ignore-tracked-files-in-git) here.
+2. Before all commits add to your local repository `.gitignore` file. Because in other case, it is not gonna work and you can solve the [problems](https://www.git-tower.com/learn/git/faq/ignore-tracked-files-in-git) here.
 
 ```powershell
 protractor.conf.ts
@@ -94,9 +93,9 @@ This file allows you to configure your code style displaying, colors, size and s
 
 ## Keep eyes on versions:
 
-1. chromedriver (for updating in terminal run command: npm run webdriver:update)
-2. node.js (node -v - checks current version, for updating - download tha latest directly from site)
-3. npm (npm -v)
+1. chromedriver (for updating in terminal run command: `npm run webdriver:update`)
+2. node.js (`node -v` - checks current version, for updating - download tha latest directly from site)
+3. npm (`npm -v`)
 
 ## Useful commands
 
