@@ -51,7 +51,7 @@ describe('**fr03** Account details test suite', () => {
         await myAccountPage.logout();
     });
 
-    fit('**fr03_1** Fill Account details form with valid data', async () => {
+    it('**fr03_1** Fill Account details form with valid data', async () => {
 
         await accountDetails.fillAccountDetailsForm(accountDetailsValidDataModel);
         await accountDetails.typePassword(registeredUser.password);

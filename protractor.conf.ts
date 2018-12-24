@@ -4,9 +4,9 @@ import { SpecReporter } from "jasmine-spec-reporter";
 const specTimeout = 360000;
 export let config: Config = {
     allScriptsTimeout: specTimeout,
-    getPageTimeout: specTimeout,
+    getPageTimeout: specTimeout, // timeout for opening all pages
     framework: 'jasmine',
-    directConnect: true,
+    directConnect: true, // starts tests on local browser, not remote server
     capabilities: {
         browserName: 'chrome',
         chromeOptions: {           

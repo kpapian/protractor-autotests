@@ -11,6 +11,10 @@ export class Navigation {
         await browser.navigate().back();
     }
 
+    async restartBrowser()  {
+        await browser.restart();
+    }
+
     async goToPage(url: string) {
         await browser.get(url);
         await browser.waitForAngular();       

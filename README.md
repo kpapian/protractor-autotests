@@ -104,3 +104,7 @@ This is going to monitor the folder for any changes in our TypeScript files and 
 ```powershell
 tsc *.ts --watch
 ```
+
+## Debug configuration in VS Code
+
+Configuration of debug is a part of VS Code settings (in is a launch.json file in .vscode folder). Click on Debug button on left menu - > add configuration - node.js - it is adds launch.json file into .vscode folder. 
