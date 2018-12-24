@@ -4,8 +4,8 @@ fr01-login-tests
 
 ## Change History
 
-| Description | Engineer      | Date       |
-| ----------- | ------------- | ---------- |
+| Description | Responsible   | Date       |
+|-------------|---------------|------------|
 | Created by  | Karyna Papian | 12/06/2018 |
 
 ## Test Design Inputs
@@ -34,7 +34,7 @@ fr01_1 Login with valid user
 
 Pass/Fail criteria:
 
-1. fr01_1 - the user is login.
+1. The user is login.
 
 ```gherkin
 Given Test setup
@@ -46,7 +46,7 @@ fr01_2 Check login required field
 
 Pass/Fail criteria:
 
-1. fr01_2 - error messages for email and password fields.
+1. Error messages for email and password fields.
 
 ```gherkin
 Given the user open site
@@ -59,7 +59,7 @@ fr01_3 Login with invalid user
 
 Pass/Fail criteria:
 
-1. fr01_3 - invalid login error messages is appeared.
+1. Invalid login error messages is appeared.
 
 ```gherkin
 Given the user open site
@@ -72,7 +72,7 @@ fr01_4 Check static context for login form
 
 Pass/Fail criteria:
 
-1. fr01_4 - the email, password, loginBtn, forgotPassword, staticTextAccountBenefits is present.
+1. The email, password, loginBtn, forgotPassword, staticTextAccountBenefits is present.
 
 ```gherkin
 Given the user open site
@@ -84,7 +84,7 @@ fr01_5 Check close login form functionality
 
 Pass/Fail criteria:
 
-1. fr01_5 - the login form is closed.
+1. The login form is closed.
 
 ```gherkin
 Given the user open site
