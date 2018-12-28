@@ -25,7 +25,7 @@ const myAccountPage = new MyAccountPage();
 const loginPage = new LoginPopup();
 const navigation = new Navigation();
 
-describe('**fr01** Login test suite', () => {
+fdescribe('**fr01** Login test suite', () => {
 
     beforeEach(async () => {
         await navigation.goToPage(Environment.baseUrl);
@@ -65,7 +65,7 @@ describe('**fr01** Login test suite', () => {
         });
     }
 
-    it('**fr01_4** Check static context for login form', async () => {
+    fit('**fr01_4** Check static context for login form', async () => {
 
         await homePage.clickSignInBtn();
 
