@@ -69,6 +69,8 @@ fdescribe('**fr01** Login test suite', () => {
 
         await homePage.clickSignInBtn();
 
+        let a = 'Hop';
+
         expect(await loginPage.isLoginFormOpened()).toBeTruthy();
         expect(await loginPage.isEmailFieldPresent()).toBeTruthy();
         expect(await loginPage.isPasswordFieldPresent()).toBeTruthy();

@@ -8,7 +8,6 @@ import { MyAccountPage } from '../commonLib/page-objects/myAccount-page';
 import { AccountDetails } from '../commonLib/page-objects/accountDetails-page';
 import { Converter } from '../commonLib/utils/converter';
 import { AccountDetailsModel } from '../commonLib/models/account-details-model';
-import { browser } from 'protractor';
 
 //#region Test Preparation 
 const FIRST_NAME_ERROR_MESSAGE = 'The First Name given is invalid or incomplete, please review and amend';
