@@ -4,3 +4,6 @@ node_modules
 tmp
 
 package-lock.json
+app.conf.json
+
+test-results/

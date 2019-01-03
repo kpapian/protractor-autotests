@@ -2,10 +2,11 @@ import { Config } from 'protractor';
 import { SpecReporter } from "jasmine-spec-reporter";
 
 const specTimeout = 360000;
+let AllureReporter = require('jasmine-allure-reporter');
 export let config: Config = {
     allScriptsTimeout: specTimeout,
     getPageTimeout: specTimeout, // timeout for opening all pages
-    framework: 'jasmine',
+    framework: 'jasmine2',
     directConnect: true, // starts tests on local browser, not remote server
     capabilities: {
         browserName: 'chrome',
@@ -25,6 +26,11 @@ export let config: Config = {
     SELENIUM_PROMISE_MANAGER: false,
 
     async onPrepare() {
+        
+        jasmine.getEnv().addReporter(new AllureReporter({
+            resultsDir: 'test-results/allure-results'
+          })); // add for allure report
+        
         jasmine.getEnv().addReporter(
             new SpecReporter({
                 suite: {
@@ -49,7 +55,7 @@ export let config: Config = {
                 print: (log: string) => {
                     console.log(log);
                 },
-            })
+            })        
         )
     },
     jasmineNodeOpts: {

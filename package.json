@@ -5,11 +5,13 @@
   "author": "Karyna Papian",
   "main": "index.js",
   "scripts": {
+    "report": "allure generate test-results/allure-results --clean --output test-results/allure-report || true",
+    "view": "allure open test-results/allure-report --host 127.0.0.1 --port 8080",
     "test": "protractor tmp/protractor.conf.js",
-    "tsc": "tsc",
-    "setup": "npm run tsc",
-    "pretest": "npm run setup",
-    "webdriver-update": "webdriver-manager update"
+    "pretest": "npm run cleanresults && tsc",
+    "webdriver-update": "webdriver-manager update",
+    "posttest": "npm run report && npm run view",
+    "cleanresults": "rimraf test-results/*"
   },
   "repository": {
     "type": "git",
@@ -22,9 +24,12 @@
   },
   "homepage": "https://github.com/kpapian/protractor-autotests#readme",
   "dependencies": {
+    "allure-commandline": "2.8.1",
     "jasmine": "3.2.0",
+    "jasmine-allure-reporter": "1.0.2",
     "protractor": "5.4.1",
-    "selenium-webdriver": "^4.0.0-alpha.1",
+    "rimraf": "2.6.2",
+    "selenium-webdriver": "4.0.0-alpha.1",
     "ts-node": "7.0.1",
     "tslint": "5.11.0",
     "typescript": "3.1.3"

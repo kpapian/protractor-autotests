@@ -13,7 +13,7 @@ Automation framework based on TypeScript, Protractor and Jasmine technologies.
 1. Create test directory and opened it via VS Code
 2. Make sure that all pre-setup conditions are satisfy
 3. In VS Code terminal perform next commands:
-  
+
 ```powershell
 npm init -y - added package.json to folder
 npm install typescript - added node_module
