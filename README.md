@@ -1,6 +1,7 @@
 # PROTRACTOR-TestAutomation
 
 Automation framework based on TypeScript, Protractor and Jasmine technologies.
+Using Allure for report generation.
 
 ## Pre-setup
 
@@ -97,13 +98,11 @@ This file allows you to configure your code style displaying, colors, size and s
 2. node.js (`node -v` - checks current version, for updating - download tha latest directly from site)
 3. npm (`npm -v`)
 
-## Useful commands
+## Report generation
 
-This is going to monitor the folder for any changes in our TypeScript files and compile them behind the scenes.
-
-```powershell
-tsc *.ts --watch
-```
+Allure is using for report generation.
+Before all test run old results are deleting, and after all tests are finished
+new reports generates to test-results folder.
 
 ## Debug configuration in VS Code
 
