@@ -98,11 +98,22 @@ This file allows you to configure your code style displaying, colors, size and s
 2. node.js (`node -v` - checks current version, for updating - download tha latest directly from site)
 3. npm (`npm -v`)
 
-## Report generation
+## Report configuration and generation
 
 Allure is using for report generation.
+Install allure reporter.
+
+```powershell
+npm i jasmine-allure-reporter
+```
+
+Add reporter to protractor.conf.ts file - `jasmine.getEnv().addReporter(new AllureReporter()`
+
 Before all test run old results are deleting, and after all tests are finished
 new reports generates to test-results folder.
+
+Add scripts to package.json file for cleaning folders with test results before running tests, generating html report after run
+and open html report on server to view the results.
 
 ## Debug configuration in VS Code
 
